@@ -5,13 +5,14 @@ pipeline {
     stages {
 
         stage('Build') {
-            steps {
-                echo 'BUILD: Installing Flask dependencies'
+    steps {
+        echo 'BUILD: Installing Flask dependencies'
 
-                sh 'python3 -m venv venv'
-                sh 'venv/bin/pip install -r requirements.txt'
-            }
-        }
+        sh 'rm -rf venv'
+        sh 'python3 -m venv venv'
+        sh 'venv/bin/pip install -r requirements.txt'
+    }
+}
 
         stage('Test') {
             steps {
